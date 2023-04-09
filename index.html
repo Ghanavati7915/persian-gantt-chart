@@ -31,24 +31,20 @@
 	<link rel="stylesheet" href="dist/frappe-gantt.css" />
 	<link rel="stylesheet" href="dist/font.css" />
 	<script src="dist/frappe-gantt.js"></script>
-
-
-	<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-
-
 </head>
 <body>
 	<div id="container" class="container Estedad_FD_Light">
-		<h2 class="heading">Interactive Gantt Chart entirely made in SVG!</h2>
+		<h2 class="heading" style="direction:rtl;" > گانت چارت فارسی </h2>
+		<h4 class="heading" style="direction:rtl;" > میتوانید این نمودار را برای نمایش SPRINT استفاده نمایید </h4>
 		<div class="gantt-target"></div>
 
-		<div class="mx-auto mt-3 btn-group" role="group">
-			<button type="button" class="btn btn-sm btn-light" onclick="changeViewMode('Quarter Day')">Quarter Day</button>
-			<button type="button" class="btn btn-sm btn-light" onclick="changeViewMode('Half Day')">Half Day</button>
-			<button type="button" class="btn btn-sm btn-light" onclick="changeViewMode('Day')">Day</button>
-			<button type="button" class="btn btn-sm btn-light" onclick="changeViewMode('Week')">Week</button>
-			<button type="button" class="btn btn-sm btn-light" onclick="changeViewMode('Month')">Month</button>
-			<button type="button" class="btn btn-sm btn-light" onclick="changeViewMode('Year')">Year</button>
+		<div class="mx-auto mt-3 btn-group" style="margin-top:20px;direction:rtl;" role="group">
+			<button type="button" class="btn btn-sm Estedad_FD_Light btn-light" onclick="changeViewMode('Quarter Day')">ربع روز نما</button>
+			<button type="button" class="btn btn-sm Estedad_FD_Light btn-light" onclick="changeViewMode('Half Day')">نیم روز نما</button>
+			<button type="button" class="btn btn-sm Estedad_FD_Light btn-light" onclick="changeViewMode('Day')">روز نما</button>
+			<button type="button" class="btn btn-sm Estedad_FD_Light btn-light" onclick="changeViewMode('Week')">هفته نما</button>
+			<button type="button" class="btn btn-sm Estedad_FD_Light btn-light" onclick="changeViewMode('Month')">ماه نما</button>
+			<button type="button" class="btn btn-sm Estedad_FD_Light btn-light" onclick="changeViewMode('Year')">سال نما</button>
 		</div>
 	</div>
 
@@ -57,71 +53,69 @@
 			{
 				start: '2023-04-07',
 				end: '2023-04-19',
-				name: 'Deploy',
-				id: "Task 4",
+				name: 'به ازای اخرین لاگ در مونگو ذخیره شود',
+				id: "Task 1",
 				progress: 0,
 			},
 			{
-				start: '2023-04-10',
-				end: '2023-04-15',
-				name: 'زنده است',
-				id: "Task 5",
-				progress: 65,
+				start: '2023-04-11',
+				end: '2023-04-13',
+				name: 'اضافه کردن Enum سخت افزار ها',
+				id: "Task 2",
+				dependencies: 'Task 1',
+				custom_class: 'bar-milestone'
+			},
+			{
+				start: '2023-04-12',
+				end: '2023-04-18',
+				name: 'حل مشکلات نقشه',
+				id: "Task 3",
+				progress: 2,
 				dependencies: 'Task 4',
 				custom_class: 'bar-milestone'
 			},
 			{
-				start: '2023-04-10',
+				start: '2023-04-05',
 				end: '2023-04-15',
-				name: 'زنده است',
+				name: 'اضافه کردن api های سخت افزار',
+				id: "Task 4",
+				progress: 14,
+				custom_class: 'bar-milestone'
+			},
+			{
+				start: '2023-04-07',
+				end: '2023-04-21',
+				name: 'سیستم رمزنگاری',
 				id: "Task 5",
 				progress: 65,
+				dependencies: 'Task 8',
+				custom_class: 'bar-milestone'
+			},
+			{
+				start: '2023-04-11',
+				end: '2023-04-19',
+				name: 'تصحیح نحوه احراز در Login',
+				id: "Task 6",
+				progress: 66,
 				dependencies: 'Task 4',
 				custom_class: 'bar-milestone'
 			},
 			{
-				start: '2023-04-10',
-				end: '2023-04-15',
-				name: 'زنده است',
-				id: "Task 5",
-				progress: 65,
-				dependencies: 'Task 4',
+				start: '2023-04-07',
+				end: '2023-04-16',
+				name: 'مشکل Odata برای filter',
+				id: "Task 7",
+				progress: 23,
+				dependencies: 'Task 2, Task 3',
 				custom_class: 'bar-milestone'
 			},
 			{
-				start: '2023-04-10',
-				end: '2023-04-15',
-				name: 'زنده است',
-				id: "Task 5",
-				progress: 65,
-				dependencies: 'Task 4',
-				custom_class: 'bar-milestone'
-			},
-			{
-				start: '2023-04-10',
-				end: '2023-04-15',
-				name: 'زنده است',
-				id: "Task 5",
-				progress: 65,
-				dependencies: 'Task 4',
-				custom_class: 'bar-milestone'
-			},
-			{
-				start: '2023-04-10',
-				end: '2023-04-15',
-				name: 'زنده است',
-				id: "Task 5",
-				progress: 65,
-				dependencies: 'Task 4',
-				custom_class: 'bar-milestone'
-			},
-			{
-				start: '2023-04-10',
-				end: '2023-04-15',
-				name: 'زنده است',
-				id: "Task 5",
-				progress: 65,
-				dependencies: 'Task 4',
+				start: '2023-04-17',
+				end: '2023-04-18',
+				name: 'طراحی دیاگرام اولیه دیتابیس',
+				id: "Task 8",
+				progress: 89,
+				dependencies: 'Task 3',
 				custom_class: 'bar-milestone'
 			}
 		]
@@ -149,7 +143,7 @@
 				return `
 					<div class="details-container">
 					  <h5>${task.name}</h5>
-					  <p>انتظار می رود در تاریخ ${end_date} کامل شود</p>
+					  <p>انتظار می رود در  ${end_date} کامل شود</p>
 					  <p>${task.progress}% تکمیل شده است !</p>
 					</div>
 				  `;
@@ -161,33 +155,15 @@
 		}
 	</script>
 
-	<!-- Javascript Smooth Scroll-->
-<!--	<script src="dist/scroll.js"></script>-->
+
 
 	<!-- Jquery Smooth Scroll-->
-<!--	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>-->
-<!--	<script src="dist/jquery.dragscroll.min.js"></script>-->
-<!--	<script type="text/javascript">-->
-<!--		$('.gantt').dragScroll({-->
-<!--			onStart: function($this) {-->
-<!--				console.log($this);-->
-<!--				// $('.drag').dragscroll('destroy');-->
-<!--			},-->
-<!--			onMove: function($this) {-->
-<!--				console.log($this);-->
-<!--			},-->
-<!--			onEnd: function($this) {-->
-<!--				console.log($this);-->
-<!--			}-->
-<!--		});-->
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+	<script src="dist/jquery.dragscroll.min.js"></script>
+	<script src="dist/scroll-2.js"></script>
 
-<!--		$('.gantt').dragScroll({-->
-<!--			direction: 'scrollRight'-->
-<!--		});-->
-<!--		$('.gantt').dragScroll({-->
-<!--			direction: 'scrollTop'-->
-<!--		});-->
-<!--	</script>-->
+	<!-- Javascript Smooth Scroll-->
+	<!--	<script src="dist/scroll.js"></script>-->
 
 </body>
 </html>
