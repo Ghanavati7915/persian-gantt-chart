@@ -108,6 +108,7 @@
   font-size: 12px;
 }
 .gantt-container .popup-wrapper {
+  direction:rtl;
   position: absolute;
   top: 0;
   left: 0;

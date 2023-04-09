@@ -1,3 +1,159 @@
+getPersianDate = (date , format) => {
+    let week = new Array("يكشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنج شنبه", "جمعه", "شنبه")
+    let months = new Array("فروردين", "ارديبهشت", "خرداد", "تير", "مرداد", "شهريور", "مهر", "آبان", "آذر", "دي", "بهمن", "اسفند");
+    let today = new Date(date);
+    let d = today.getDay();
+    let day = today.getDate();
+    let month = today.getMonth() + 1;
+    let year = today.getYear();
+    year = (window.navigator.userAgent.indexOf('MSIE') > 0) ? year : 1900 + year;
+    if (year == 0) {
+        year = 2000;
+    }
+    if (year < 100) {
+        year += 1900;
+    }
+    y = 1;
+    for (i = 0; i < 3000; i += 4) {
+        if (year == i) {
+            y = 2;
+        }
+    }
+    for (i = 1; i < 3000; i += 4) {
+        if (year == i) {
+            y = 3;
+        }
+    }
+    if (y == 1) {
+        year -= ((month < 3) || ((month == 3) && (day < 21))) ? 622 : 621;
+        switch (month) {
+            case 1:
+                (day < 21) ? (month = 10, day += 10) : (month = 11, day -= 20);
+                break;
+            case 2:
+                (day < 20) ? (month = 11, day += 11) : (month = 12, day -= 19);
+                break;
+            case 3:
+                (day < 21) ? (month = 12, day += 9) : (month = 1, day -= 20);
+                break;
+            case 4:
+                (day < 21) ? (month = 1, day += 11) : (month = 2, day -= 20);
+                break;
+            case 5:
+            case 6:
+                (day < 22) ? (month -= 3, day += 10) : (month -= 2, day -= 21);
+                break;
+            case 7:
+            case 8:
+            case 9:
+                (day < 23) ? (month -= 3, day += 9) : (month -= 2, day -= 22);
+                break;
+            case 10:
+                (day < 23) ? (month = 7, day += 8) : (month = 8, day -= 22);
+                break;
+            case 11:
+            case 12:
+                (day < 22) ? (month -= 3, day += 9) : (month -= 2, day -= 21);
+                break;
+            default:
+                break;
+        }
+    }
+    if (y == 2) {
+        year -= ((month < 3) || ((month == 3) && (day < 20))) ? 622 : 621;
+        switch (month) {
+            case 1:
+                (day < 21) ? (month = 10, day += 10) : (month = 11, day -= 20);
+                break;
+            case 2:
+                (day < 20) ? (month = 11, day += 11) : (month = 12, day -= 19);
+                break;
+            case 3:
+                (day < 20) ? (month = 12, day += 10) : (month = 1, day -= 19);
+                break;
+            case 4:
+                (day < 20) ? (month = 1, day += 12) : (month = 2, day -= 19);
+                break;
+            case 5:
+                (day < 21) ? (month = 2, day += 11) : (month = 3, day -= 20);
+                break;
+            case 6:
+                (day < 21) ? (month = 3, day += 11) : (month = 4, day -= 20);
+                break;
+            case 7:
+                (day < 22) ? (month = 4, day += 10) : (month = 5, day -= 21);
+                break;
+            case 8:
+                (day < 22) ? (month = 5, day += 10) : (month = 6, day -= 21);
+                break;
+            case 9:
+                (day < 22) ? (month = 6, day += 10) : (month = 7, day -= 21);
+                break;
+            case 10:
+                (day < 22) ? (month = 7, day += 9) : (month = 8, day -= 21);
+                break;
+            case 11:
+                (day < 21) ? (month = 8, day += 10) : (month = 9, day -= 20);
+                break;
+            case 12:
+                (day < 21) ? (month = 9, day += 10) : (month = 10, day -= 20);
+                break;
+            default:
+                break;
+        }
+    }
+    if (y == 3) {
+        year -= ((month < 3) || ((month == 3) && (day < 21))) ? 622 : 621;
+        switch (month) {
+            case 1:
+                (day < 20) ? (month = 10, day += 11) : (month = 11, day -= 19);
+                break;
+            case 2:
+                (day < 19) ? (month = 11, day += 12) : (month = 12, day -= 18);
+                break;
+            case 3:
+                (day < 21) ? (month = 12, day += 10) : (month = 1, day -= 20);
+                break;
+            case 4:
+                (day < 21) ? (month = 1, day += 11) : (month = 2, day -= 20);
+                break;
+            case 5:
+            case 6:
+                (day < 22) ? (month -= 3, day += 10) : (month -= 2, day -= 21);
+                break;
+            case 7:
+            case 8:
+            case 9:
+                (day < 23) ? (month -= 3, day += 9) : (month -= 2, day -= 22);
+                break;
+            case 10:
+                (day < 23) ? (month = 7, day += 8) : (month = 8, day -= 22);
+                break;
+            case 11:
+            case 12:
+                (day < 22) ? (month -= 3, day += 9) : (month -= 2, day -= 21);
+                break;
+            default:
+                break;
+        }
+    }
+    if(format===null || format===undefined)
+        return `${week[d]} ${day} ${months[month - 1]} ${year}`
+    if(format==="y/m/d")
+        return `${year}/${month}/${day}`;
+    if(format==="d/m/y")
+        return `${day}/${month}/${year}`;
+    if(format==="y")
+        return `${year}`;
+    if(format==="m")
+        return `${month}`;
+    if(format==="M")
+        return `${months[month - 1]}`;
+    if(format==="d")
+        return `${day}`;
+}
+
+
 var Gantt = (function () {
     'use strict';
 
@@ -24,90 +180,20 @@ var Gantt = (function () {
             'November',
             'December',
         ],
-        es: [
-            'Enero',
-            'Febrero',
-            'Marzo',
-            'Abril',
-            'Mayo',
-            'Junio',
-            'Julio',
-            'Agosto',
-            'Septiembre',
-            'Octubre',
-            'Noviembre',
-            'Diciembre',
-        ],
-        ru: [
-            'Январь',
-            'Февраль',
-            'Март',
-            'Апрель',
-            'Май',
-            'Июнь',
-            'Июль',
-            'Август',
-            'Сентябрь',
-            'Октябрь',
-            'Ноябрь',
-            'Декабрь',
-        ],
-        ptBr: [
-            'Janeiro',
-            'Fevereiro',
-            'Março',
-            'Abril',
-            'Maio',
-            'Junho',
-            'Julho',
-            'Agosto',
-            'Setembro',
-            'Outubro',
-            'Novembro',
-            'Dezembro',
-        ],
-        fr: [
-            'Janvier',
-            'Février',
-            'Mars',
-            'Avril',
-            'Mai',
-            'Juin',
-            'Juillet',
-            'Août',
-            'Septembre',
-            'Octobre',
-            'Novembre',
-            'Décembre',
-        ],
-        tr: [
-            'Ocak',
-            'Şubat',
-            'Mart',
-            'Nisan',
-            'Mayıs',
-            'Haziran',
-            'Temmuz',
-            'Ağustos',
-            'Eylül',
-            'Ekim',
-            'Kasım',
-            'Aralık',
-        ],
-        zh: [
-            '一月',
-            '二月',
-            '三月',
-            '四月',
-            '五月',
-            '六月',
-            '七月',
-            '八月',
-            '九月',
-            '十月',
-            '十一月',
-            '十二月',
-        ],
+        fa: [
+            'دی',
+            'بهمن',
+            'اسفند',
+            'فروردین',
+            'اردیبهشت',
+            'خرداد',
+            'تیر',
+            'مرداد',
+            'شهریور',
+            'مهر',
+            'آبان',
+            'آذر',
+        ]
     };
 
     var date_utils = {
@@ -163,9 +249,9 @@ var Gantt = (function () {
             return date_string + (with_time ? ' ' + time_string : '');
         },
 
-        format(date, format_string = 'YYYY-MM-DD HH:mm:ss.SSS', lang = 'en') {
+        format(date, format_string = 'YYYY-MM-DD HH:mm:ss.SSS', lang = 'fa') {
             const values = this.get_date_values(date).map((d) => padStart(d, 2, 0));
-            const format_map = {
+            const format_mapOLD = {
                 YYYY: values[0],
                 MM: padStart(+values[1] + 1, 2, 0),
                 DD: values[2],
@@ -176,6 +262,19 @@ var Gantt = (function () {
                 D: values[2],
                 MMMM: month_names[lang][+values[1]],
                 MMM: month_names[lang][+values[1]],
+            };
+
+            const format_map = {
+                YYYY: getPersianDate(date,"y"),
+                MM: getPersianDate(date,"m"),
+                DD: getPersianDate(date,"d"),
+                HH: values[3],
+                mm: values[4],
+                ss: values[5],
+                SSS: values[6],
+                D: getPersianDate(date,"d"),
+                MMMM: getPersianDate(date,"M"),
+                MMM: getPersianDate(date,"M"),
             };
 
             let str = format_string;
@@ -193,7 +292,6 @@ var Gantt = (function () {
             formatted_values.forEach((value, i) => {
                 str = str.replace(`$${i}`, value);
             });
-
             return str;
         },
 
@@ -661,12 +759,12 @@ var Gantt = (function () {
 
             const start_date = date_utils.format(
                 this.task._start,
-                'MMM D',
+                'D MMM',
                 this.gantt.options.language
             );
             const end_date = date_utils.format(
                 date_utils.add(this.task._end, -1, 'second'),
-                'MMM D',
+                'D MMM',
                 this.gantt.options.language
             );
             const subtitle = start_date + ' - ' + end_date;
@@ -1010,7 +1108,8 @@ var Gantt = (function () {
             let position_meta;
             if (target_element instanceof HTMLElement) {
                 position_meta = target_element.getBoundingClientRect();
-            } else if (target_element instanceof SVGElement) {
+            }
+            else if (target_element instanceof SVGElement) {
                 position_meta = options.target_element.getBBox();
             }
 
@@ -1114,7 +1213,7 @@ var Gantt = (function () {
                 date_format: 'YYYY-MM-DD',
                 popup_trigger: 'click',
                 custom_popup_html: null,
-                language: 'en',
+                language: 'fa',
             };
             this.options = Object.assign({}, default_options, options);
         }
