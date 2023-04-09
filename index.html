@@ -19,6 +19,14 @@
 		.heading {
 			text-align: center;
 		}
+		.details-container {
+			background: #333;
+			display: inline-block;
+			padding: 12px;
+			text-align: center;
+			width: 200px;
+			direction: rtl;
+		}
 	</style>
 	<link rel="stylesheet" href="dist/frappe-gantt.css" />
 	<link rel="stylesheet" href="dist/font.css" />
@@ -42,7 +50,6 @@
 			<button type="button" class="btn btn-sm btn-light" onclick="changeViewMode('Month')">Month</button>
 			<button type="button" class="btn btn-sm btn-light" onclick="changeViewMode('Year')">Year</button>
 		</div>
-
 	</div>
 
 	<script>
@@ -137,41 +144,50 @@
 			header_height: 50,
 			view_mode: 'Day',
 			language: 'fa',
+			custom_popup_html: function(task) {
+				const end_date = getPersianDate(task.end,"y/m/d")
+				return `
+					<div class="details-container">
+					  <h5>${task.name}</h5>
+					  <p>انتظار می رود در تاریخ ${end_date} کامل شود</p>
+					  <p>${task.progress}% تکمیل شده است !</p>
+					</div>
+				  `;
+			}
 		});
 
 		function changeViewMode(data){
 			gantt_chart.change_view_mode(data)
 		}
 	</script>
+
+	<!-- Javascript Smooth Scroll-->
 <!--	<script src="dist/scroll.js"></script>-->
 
+	<!-- Jquery Smooth Scroll-->
+<!--	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>-->
+<!--	<script src="dist/jquery.dragscroll.min.js"></script>-->
+<!--	<script type="text/javascript">-->
+<!--		$('.gantt').dragScroll({-->
+<!--			onStart: function($this) {-->
+<!--				console.log($this);-->
+<!--				// $('.drag').dragscroll('destroy');-->
+<!--			},-->
+<!--			onMove: function($this) {-->
+<!--				console.log($this);-->
+<!--			},-->
+<!--			onEnd: function($this) {-->
+<!--				console.log($this);-->
+<!--			}-->
+<!--		});-->
 
-
-
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-	<script src="dist/jquery.dragscroll.min.js"></script>
-	<script type="text/javascript">
-		$('.gantt').dragScroll({
-			onStart: function($this) {
-				console.log($this);
-				// $('.drag').dragscroll('destroy');
-			},
-			onMove: function($this) {
-				console.log($this);
-			},
-			onEnd: function($this) {
-				console.log($this);
-			}
-		});
-
-		$('.gantt').dragScroll({
-			direction: 'scrollRight'
-		});
-		$('.gantt').dragScroll({
-			direction: 'scrollTop'
-		});
-	</script>
-
+<!--		$('.gantt').dragScroll({-->
+<!--			direction: 'scrollRight'-->
+<!--		});-->
+<!--		$('.gantt').dragScroll({-->
+<!--			direction: 'scrollTop'-->
+<!--		});-->
+<!--	</script>-->
 
 </body>
 </html>
