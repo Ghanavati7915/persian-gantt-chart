@@ -23,12 +23,28 @@
 	<link rel="stylesheet" href="dist/frappe-gantt.css" />
 	<link rel="stylesheet" href="dist/font.css" />
 	<script src="dist/frappe-gantt.js"></script>
+
+
+	<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+
 </head>
 <body>
-	<div class="container Estedad_FD_Light">
+	<div id="container" class="container Estedad_FD_Light">
 		<h2 class="heading">Interactive Gantt Chart entirely made in SVG!</h2>
 		<div class="gantt-target"></div>
+
+		<div class="mx-auto mt-3 btn-group" role="group">
+			<button type="button" class="btn btn-sm btn-light" onclick="changeViewMode('Quarter Day')">Quarter Day</button>
+			<button type="button" class="btn btn-sm btn-light" onclick="changeViewMode('Half Day')">Half Day</button>
+			<button type="button" class="btn btn-sm btn-light" onclick="changeViewMode('Day')">Day</button>
+			<button type="button" class="btn btn-sm btn-light" onclick="changeViewMode('Week')">Week</button>
+			<button type="button" class="btn btn-sm btn-light" onclick="changeViewMode('Month')">Month</button>
+			<button type="button" class="btn btn-sm btn-light" onclick="changeViewMode('Year')">Year</button>
+		</div>
+
 	</div>
+
 	<script>
 		var tasks = [
 			{
@@ -37,6 +53,60 @@
 				name: 'Deploy',
 				id: "Task 4",
 				progress: 0,
+			},
+			{
+				start: '2023-04-10',
+				end: '2023-04-15',
+				name: 'زنده است',
+				id: "Task 5",
+				progress: 65,
+				dependencies: 'Task 4',
+				custom_class: 'bar-milestone'
+			},
+			{
+				start: '2023-04-10',
+				end: '2023-04-15',
+				name: 'زنده است',
+				id: "Task 5",
+				progress: 65,
+				dependencies: 'Task 4',
+				custom_class: 'bar-milestone'
+			},
+			{
+				start: '2023-04-10',
+				end: '2023-04-15',
+				name: 'زنده است',
+				id: "Task 5",
+				progress: 65,
+				dependencies: 'Task 4',
+				custom_class: 'bar-milestone'
+			},
+			{
+				start: '2023-04-10',
+				end: '2023-04-15',
+				name: 'زنده است',
+				id: "Task 5",
+				progress: 65,
+				dependencies: 'Task 4',
+				custom_class: 'bar-milestone'
+			},
+			{
+				start: '2023-04-10',
+				end: '2023-04-15',
+				name: 'زنده است',
+				id: "Task 5",
+				progress: 65,
+				dependencies: 'Task 4',
+				custom_class: 'bar-milestone'
+			},
+			{
+				start: '2023-04-10',
+				end: '2023-04-15',
+				name: 'زنده است',
+				id: "Task 5",
+				progress: 65,
+				dependencies: 'Task 4',
+				custom_class: 'bar-milestone'
 			},
 			{
 				start: '2023-04-10',
@@ -64,9 +134,44 @@
 			on_view_change: (mode) => {
 				// console.log(mode);
 			},
+			header_height: 50,
 			view_mode: 'Day',
-			language: 'fa'
+			language: 'fa',
+		});
+
+		function changeViewMode(data){
+			gantt_chart.change_view_mode(data)
+		}
+	</script>
+<!--	<script src="dist/scroll.js"></script>-->
+
+
+
+
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+	<script src="dist/jquery.dragscroll.min.js"></script>
+	<script type="text/javascript">
+		$('.gantt').dragScroll({
+			onStart: function($this) {
+				console.log($this);
+				// $('.drag').dragscroll('destroy');
+			},
+			onMove: function($this) {
+				console.log($this);
+			},
+			onEnd: function($this) {
+				console.log($this);
+			}
+		});
+
+		$('.gantt').dragScroll({
+			direction: 'scrollRight'
+		});
+		$('.gantt').dragScroll({
+			direction: 'scrollTop'
 		});
 	</script>
+
+
 </body>
 </html>
