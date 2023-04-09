@@ -22,6 +22,7 @@ var tasks = [
      name: 'سیستم رمزنگاری',
      id: "Task 5",
      progress: 65,
+      avatars: ["https://avatars.githubusercontent.com/u/27079323?v=4","https://avatars.githubusercontent.com/u/27079323?v=4"],
      dependencies: 'Task 8',
      custom_class: 'bar-milestone' // optional
   },
@@ -31,4 +32,4 @@ var gantt = new Gantt("#gantt", tasks);
 ```
 
 ------------------
-تولید شده به واسطه [احمد قنواتی](https://github.com/Ghanavati7915)
+تولید شده توسط [احمد قنواتی](https://github.com/Ghanavati7915)

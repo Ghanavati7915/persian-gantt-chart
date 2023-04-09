@@ -55,6 +55,7 @@
 				end: '2023-04-19',
 				name: 'به ازای اخرین لاگ در مونگو ذخیره شود',
 				id: "Task 1",
+				avatars: ["https://avatars.githubusercontent.com/u/27079323?v=4"],
 				progress: 0,
 			},
 			{
@@ -63,6 +64,7 @@
 				name: 'اضافه کردن Enum سخت افزار ها',
 				id: "Task 2",
 				dependencies: 'Task 1',
+				avatars: ["https://avatars.githubusercontent.com/u/27079323?v=4","https://avatars.githubusercontent.com/u/27079323?v=4"],
 				custom_class: 'bar-milestone'
 			},
 			{
@@ -136,15 +138,30 @@
 				// console.log(mode);
 			},
 			header_height: 50,
+			bar_corner_radius : 10,
 			view_mode: 'Day',
 			language: 'fa',
 			custom_popup_html: function(task) {
 				const end_date = getPersianDate(task.end,"y/m/d")
+
+				let avatars = ``;
+				if (task.avatars){
+					task.avatars.forEach((item) => {
+						avatars += ` <img src="${item}" width="25" height="25" alt="avatar" style="margin: auto;border-radius:50%"/>`
+					});
+				}
+
+				let progress = ``;
+				if (task.progress){
+					progress += `<p>${task.progress}% تکمیل شده است !</p>`
+				}
+
 				return `
 					<div class="details-container">
 					  <h5>${task.name}</h5>
+					 ${avatars}
 					  <p>انتظار می رود در  ${end_date} کامل شود</p>
-					  <p>${task.progress}% تکمیل شده است !</p>
+					  ${progress}
 					</div>
 				  `;
 			}
@@ -158,9 +175,9 @@
 
 
 	<!-- Jquery Smooth Scroll-->
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-	<script src="dist/jquery.dragscroll.min.js"></script>
-	<script src="dist/scroll-2.js"></script>
+<!--	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>-->
+<!--	<script src="dist/jquery.dragscroll.min.js"></script>-->
+<!--	<script src="dist/scroll-2.js"></script>-->
 
 	<!-- Javascript Smooth Scroll-->
 	<!--	<script src="dist/scroll.js"></script>-->
